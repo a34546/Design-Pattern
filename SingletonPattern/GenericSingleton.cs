@@ -41,4 +41,19 @@ namespace SingletonPattern
             Console.WriteLine(string.Format("I am {0}.", this.GetType().Name));
         }
     }
+
+    /// <summary>
+    /// 泛型单例模式的实现2
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class BaseSingleton<T> where T : new()
+    {
+        private static readonly Lazy<T> singletonLazy = new Lazy<T>(() => new T());
+        public static T Instance => singletonLazy.Value;
+
+        public void GetInfo()
+        {
+            Console.WriteLine(string.Format("I am {0}.", this.GetType().Name));
+        }
+    }
 }
